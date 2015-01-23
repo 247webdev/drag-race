@@ -21,78 +21,216 @@ After starting the engine, the player can move the dragster into the staging are
 	<link rel="stylesheet" href="css/normalize.css" media="all">
 	<link rel="stylesheet" href="css/main.css" media="all">
 	<style>
-		html {
-			margin: 0;
+		input {
+			display: none;
+		}
+		label, ul {
+			border: 1px solid #cecfd5;
+			border-radius: 6px;
+		}
+		label {
+			color: #0087cc;
+			cursor: pointer;
+			display: inline-block;
+			font-size: 18px;
+			padding: 5px 9px;
+			transition: all .15s ease;
+		}
+		label:hover {
+			color: #ff7b29;
+		}
+		input:checked + label {
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+			color: #9799a7;
+		}
+		nav {
+			max-height: 0;
+			overflow: hidden;
+			transition: all .15s ease;
+		}
+		input:checked ~ nav {
+			max-height: 500px;
+		}
+		ul {
+			list-style: none;
+			margin: 8px 0 0 0;
 			padding: 0;
+			width: 100px;
+		}
+		li {
+			border-bottom: 1px solid #cecfd5;
+		}
+		li:last-child {
+			border-bottom: 0;
+		}
+		a {
+			color: #0087cc;
+			display: block;
+			padding: 6px 12px;
+			text-decoration: none;
+		}
+		a:hover {
+			color: #ff7b29;
+		}
 
-			background: black;
+
+
+
+
+		.absPos {
+			position: absolute;
+		}
+		.relPos {
+			position: re
+		}
+		html {
+			padding: 0;
+			font-family: sans-serif;
+			font-size: 100%;
+			color: white;
+		}
+		body {
+			background: url(images/raceTrack.jpg);
+			background-repeat: no-repeat;
+			background-position: left;
+			background: #111;
+			height: 780px;
+			min-width: 900px;
 			background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.2));
 			background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.2));
 			background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.2));
 		}
-		body {
-			font-family: sans-serif;
-			font-size: 100%
+		#container {
+			position: relative;
+			height: 780px;
+			margin: 0 auto;
+			text-align: center;
 		}
 		header {
-			margin: 0;
-		}
-		#horizon {
+			position: fixed;
 			top: 0;
+			left: 0;
 			width: 100%;
 			height: 150px;
+			z-index: 10;
 
 			background: blue;
-			background: linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,1));
-			background: -webkit-linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,1));
-			background: -moz-linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,1));
-
+			background: linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,.7));
+			background: -webkit-linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,.7));
+			background: -moz-linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,.7));
 
 			font-weight: bold;
 		}
-		#horizon li {
+		nav li {
 			list-style-type: none;
 			display: inline;
 			margin-left: 30px;
 			font-size: 130%;
+		}
+		nav li:first-child {
+			margin-left: -20px;
+		}
+		li {
+			color: white;
+		}
+		section {
+			position: relative;
+			top: 152px;
+		}
+		#game {
+			position: relative;
+			margin: 0 auto;
+			width: 900px;
+			height: 500px;
+			background-color: #0a0;
+		}
+		#track {
+			background-color: #D2691E;
+			width: 900px;
+			height: 150px;
+			top: 200px;
 
 		}
+		#lightTree img {
+			width: 80px;
+			margin-bottom: -20px;
+		}
+		#stageLine {
+			background-color: #FFD700;
+			width: 2px;
+			height: 150px;
+			top: 200px;
+			left: 70px;
+
+		}
+		#startLine {
+			background-color: #FFD700;
+			width: 2px;
+			height: 150px;
+			top: 200px;
+			left: 140px;
+		}
+		#finishLine {
+			background-color: #000;
+			width: 20px;
+			height: 150px;
+			top: 200px;
+			left: 870px;
+		}
+		#finishLine span.checkered:even {
+			background-color: #aaa;
+			width: 10px;
+			height: 10px;
+		}
+		#finishLine span.checkered:odd {
+			background-color: #fff;
+			width: 10px;
+			height: 10px;
+		}
+
+		#car {
+			width: 10px;
+			height: 10px;
+			top: 240px;
+		}
+		#car img {
+			height: 50px;
+			width: 60px;
+		}
+
+
+
+
+
+		footer {
+			position: fixed;
+			width: 100%;
+			background-color: #bbb;
+			top: 650px;
+			height: 140px;
+			color: black;
+		}
+		nav {
+			padding-top: 20px;
+			min-width: 900px;
+		}
+		nav ul {
+			position: relative;
+			text-align: center;
+			width: 80%;
+			margin: 0 auto;
+		}/*
+		nav a { color: white; }
+		nav a:link { text-decoration: none; } 
+		nav a:visited { text-decoration: none; } 
+		nav a:hover { text-decoration: underline; } 
+		nav a:active { text-decoration: none; }*/
+/*		
 		#stats {
 			position: absolute;
 			margin-bottom: 0;
 			height: 150%;
 			border-top: 2px solid black;
-		}
-		nav {
-			margin-top: 20px;
-
-		}
-		nav ul {
-			margin-top: 20px;
-			position: relative;
-			text-align: center;
-			width: 80%;
-			margin: 0 auto;
-		}
-		nav a {
-			text-decoration: none;
-			color: white;
-		}
-		nav a:link {
-			text-decoration: none;
-		} 
-		nav a:visited {
-			text-decoration: none;
-		} 
-		nav a:hover {
-			text-decoration: underline;
-		} 
-		nav a:active {
-			text-decoration: none;
-		} 
-		#menu {
-			color: white;
-
 		}
 		#ground {
 			position: relative;
@@ -115,7 +253,7 @@ After starting the engine, the player can move the dragster into the staging are
 			left: 300px;
 			background-color: yellow;
 		}
-*/
+* /
 		#road {
 			position: relative;
 			left: 320px;
@@ -127,24 +265,83 @@ After starting the engine, the player can move the dragster into the staging are
 			left: 470px;
 			width: 20px;
 			background-color: yellow;
-		}
+		}*/
 	</style>
 </head>
 
 
 
 <body>
-	<header>
-		header
+<div id="container">
+	<header id="horizon">
+		<input type="checkbox" id="toggle">
+		<label for="toggle">Menu &#9776;</label>
+		<nav>
+			<ul>
+				<li><a id="reset" href="javascript:void(0);">Reset Race</a></li>
+				<li><a id="start" href="javascript:void(0);">Start Race</a></li>
+				<li><a id="save" href="javascript:void(0);">Save Race Stats</a></li>
+				<li><a id="controls" href="javascript:void(0);">Change Race Controls</a></li>
+			</ul>
+		</nav>
 	</header>
 	<section>
-		section
+		<span id="lightTree">
+			<img src="images/chrismaxTree3.jpg">
+				<div id="christmas-tree" class="center">
+				<div id="pre-stage" class="lights">
+					<div>1</div><div>2</div>
+					<div></div><div></div>
+				</div>
+				<div id="stage" class="lights">
+					<div></div><div></div>
+					<div></div><div></div>
+				</div>
+				<div id="ready1" class="lights">
+					<div></div><div></div>
+				</div>
+				<div id="ready2" class="lights">
+					<div></div><div></div>
+				</div>
+				<div id="ready3" class="lights">
+					<div></div><div></div>
+				</div>
+				<div id="start-lights" class="lights">
+					<div></div><div></div>
+				</div>
+				<div id="foul-lights" class="lights">
+					<div></div><div></div>
+				</div>
+			</div>
+		</span>
+		<span id="game">
+			<div class="absPos" id="track">track</div>
+			<div class="absPos" id="stageLine"></div>
+			<div class="absPos" id="startLine"></div>
+			<div class="absPos" id="finishLine">
+				<span class="checkered"></span>
+				<span class="checkered"></span>
+				<span class="checkered"></span>
+				<span class="checkered"></span>
+				<span class="checkered"></span>
+				<span class="checkered"></span>
+				<span class="checkered"></span>
+			</div>
+			<div class="absPos" id="car"><img src="images/dragster.gif"></div>
+		</span>
 	</section>
 	<footer>
-		footer
+		<div id="stats">
+			<div id=""></div>
+			<div id=""></div>
+			<div id=""></div>
+			<div id=""></div>
+			<div id=""></div>
+		</div>
 	</footer>
+</div>
 <!-- 	<header>
-		<div id="horizon">
+		<div>
 			<nav>
 				<ul>
 					<li id="reset"><a href="javascript:void(0)">Reset Race</a></li>
@@ -172,33 +369,7 @@ After starting the engine, the player can move the dragster into the staging are
 
 
 
-	<div id="christmas-tree" class="center">
-		pre-stage
-		<div id="pre-stage" class="lights">
-			<div></div><div></div>
-			<div></div><div></div>
-		</div>
-		stage
-		<div id="stage" class="lights">
-			<div></div><div></div>
-			<div></div><div></div>
-		</div>
-		<div id="start-lights" class="lights">
-			<div></div><div></div>
-		</div>
-		<div id="start-lights" class="lights">
-			<div></div><div></div>
-		</div>
-		<div id="start-lights" class="lights">
-			<div></div><div></div>
-		</div>
-		<div id="start-lights" class="lights">
-			<div></div><div></div>
-		</div>
-		<div id="start-lights" class="lights">
-			<div></div><div></div>
-		</div>
-	</div>
+
 </div>
 <div id="racetrack" class="center">
 	<div class="abs" id="strip">
