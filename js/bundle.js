@@ -37,7 +37,7 @@
     var self = this;
     // listen for user input, specifically
     // for the user pressing the right arrow key
-    window.addEventListener('keyup', function(event) {
+    window.addEventListener('keydown', function(event) {
       if (event.keyCode === 39) {
         self.dragster.advance();
       }
@@ -46,7 +46,7 @@
 
   Dragster.prototype.advance = function() {
     // this should move the car across the screen 1px at a time
-    this.$el.style.left = parseInt(this.$el.style.left, 10) + 1 + "px";
+    this.$el.style.left = parseInt(this.$el.style.left, 10) + 20 + "px";
   };
 
   var g = new Game();

@@ -1,0 +1,218 @@
+<!-- 
+the car should be in the pre-staging area with engine off 
+the first set of yellow lights should be on (pre-stage)
+The player should be able to start the engine with one of the keyboard keys (when engine on, shake the car with smoke)
+Use HTML, CSS, some images from google, and JS to build the game
+After starting the engine, the player can move the dragster into the staging area, crossing the pre-staging line
+
+[later] Once the dragster is in the staging area, the "stage" light should turn on
+[later] At this point, the next 3 sets of light should turn on, with 0.5 seconds between each set
+[later] The second to last set is the set of green lights, which should indicate the start of the race
+[later] If the player attempts to drive the car before the green lights are turned on, the last set of lights should be lit in red, and the race is over
+[later] If the light is green, the player should be able to race their dragster down the racetrack
+[later] Crossing the finish line is the end of the race
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3-2-1 Dragrace</title>
+	<link rel="stylesheet" href="css/normalize.css" media="all">
+	<link rel="stylesheet" href="css/main.css" media="all">
+	<style>
+		html {
+			margin: 0;
+			padding: 0;
+
+			background: black;
+			background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.2));
+			background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.2));
+			background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.2));
+		}
+		body {
+			font-family: sans-serif;
+			font-size: 100%
+		}
+		header {
+			margin: 0;
+		}
+		#horizon {
+			top: 0;
+			width: 100%;
+			height: 150px;
+
+			background: blue;
+			background: linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,1));
+			background: -webkit-linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,1));
+			background: -moz-linear-gradient(bottom, rgba(0,0,30,.2), rgba(0,0,100,1));
+
+
+			font-weight: bold;
+		}
+		#horizon li {
+			list-style-type: none;
+			display: inline;
+			margin-left: 30px;
+			font-size: 130%;
+
+		}
+		#stats {
+			position: absolute;
+			margin-bottom: 0;
+			height: 150%;
+			border-top: 2px solid black;
+		}
+		nav {
+			margin-top: 20px;
+
+		}
+		nav ul {
+			margin-top: 20px;
+			position: relative;
+			text-align: center;
+			width: 80%;
+			margin: 0 auto;
+		}
+		nav a {
+			text-decoration: none;
+			color: white;
+		}
+		nav a:link {
+			text-decoration: none;
+		} 
+		nav a:visited {
+			text-decoration: none;
+		} 
+		nav a:hover {
+			text-decoration: underline;
+		} 
+		nav a:active {
+			text-decoration: none;
+		} 
+		#menu {
+			color: white;
+
+		}
+		#ground {
+			position: relative;
+			height: 560px;
+			width: 100%;
+			background-color: brown;
+		}
+		.side {
+			z-index: 5;
+			width: 20px;
+			position: relative;
+			left: 300px;
+			background-color: yellow;
+		}
+/*
+		.leftSide {
+			z-index: 5;
+			width: 20px;
+			position: relative;
+			left: 300px;
+			background-color: yellow;
+		}
+*/
+		#road {
+			position: relative;
+			left: 320px;
+			background-color: #DDD;
+		}
+		.rightSide {
+			z-index: 5;
+			position: relative;
+			left: 470px;
+			width: 20px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<header>
+		header
+	</header>
+	<section>
+		section
+	</section>
+	<footer>
+		footer
+	</footer>
+<!-- 	<header>
+		<div id="horizon">
+			<nav>
+				<ul>
+					<li id="reset"><a href="javascript:void(0)">Reset Race</a></li>
+					<li id="start"><a href="javascript:void(0)">Start Race</a></li>
+					<li id="save"><a href="javascript:void(0)">Save Race Stats</a></li>
+					<li id="controls"><a href="javascript:void(0)">Change Race Controls</a></li>
+					<li></li>
+				</ul>
+			</nav>
+			<div id="message"></div>
+		</div>
+	</header>
+	<section>
+		<div id="ground">
+			<div class="road">
+				<span class="side leftSide"></span>
+				<span class="side rightSide"></span>			
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div id="stats"></div>
+	</footer>
+
+
+
+
+	<div id="christmas-tree" class="center">
+		pre-stage
+		<div id="pre-stage" class="lights">
+			<div></div><div></div>
+			<div></div><div></div>
+		</div>
+		stage
+		<div id="stage" class="lights">
+			<div></div><div></div>
+			<div></div><div></div>
+		</div>
+		<div id="start-lights" class="lights">
+			<div></div><div></div>
+		</div>
+		<div id="start-lights" class="lights">
+			<div></div><div></div>
+		</div>
+		<div id="start-lights" class="lights">
+			<div></div><div></div>
+		</div>
+		<div id="start-lights" class="lights">
+			<div></div><div></div>
+		</div>
+		<div id="start-lights" class="lights">
+			<div></div><div></div>
+		</div>
+	</div>
+</div>
+<div id="racetrack" class="center">
+	<div class="abs" id="strip">
+		<div id="dragster" class="abs"></div>
+		<div id="pre-staged" class="place abs"></div>
+		<div id="staged" class="place abs"></div>
+		<div id="start" class="abs"></div>
+		<div id="finish" class="place abs"></div>
+	</div>
+</div>
+ --><script src="js/bundle.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>
+<!-- dragster.gif -->
